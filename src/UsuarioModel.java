@@ -39,4 +39,18 @@ public class UsuarioModel {
             }
         return list;
     }
+
+    static HashSet listUsuariosMaioresCurtidas(Connection con) throws  SQLException{
+        Statement st;
+        HashSet list = new HashSet();
+        String retorno = new String();
+        st = con.createStatement();
+        String sql = "SELECT u.nome, COUNT(*) AS total_curtidas FROM usuario u INNER JOIN curtiu c ON u.username = c.username GROUP BY u.nome HAVING COUNT(*) = (SELECT MAX(total_curtidas) FROM (SELECT username, COUNT(*) AS total_curtidas FROM curtiu GROUP BY username)AS subconsulta);\n";
+        ResultSet result = st.executeQuery(sql);
+        while(result.next()) {
+            retorno += "Nome: "+result.getString(1)+", Total de Curtidas recebidas: "+result.getInt(2)+"\n";
+        }
+        list.add(retorno);
+        return list;
+    }
 }

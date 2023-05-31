@@ -21,16 +21,12 @@ public class Principal {
             op = menu();
             try {
                 switch (op) {
-                    case 1: new UsuarioController().createUsuario(con);
-                            break;
-                    case 2: new PostController().createPost(con);
-                            break;
-                    case 3: new UsuarioController().listarUsuario(con);
-                            break;
-                    case 4: new PostController().listarPosts(con);
-                            break;
-                    case 5: new PostController().listarPostsUsuarios(con);
-                            break;
+                    case 1 -> new UsuarioController().createUsuario(con);
+                    case 2 -> new PostController().createPost(con);
+                    case 3 -> new UsuarioController().listarUsuario(con);
+                    case 4 -> new PostController().listarPosts(con);
+                    case 5 -> new PostController().listarPostsUsuarios(con);
+                    case 6 -> new UsuarioController().listUsuariosMaioresCurtidas(con);
                 }
             }catch(SQLException ex) {
                 //ex.printStackTrace();
@@ -49,6 +45,7 @@ public class Principal {
         System.out.println("3 - Exibir todos os Usuários");
         System.out.println("4 - Exibir todos os Posts");
         System.out.println("5 - Exibir todos os Posts e seus respectivos Usuários");
+        System.out.println("6 - Exibir Usuários que mais receberam curtidas");
         System.out.println("Digite qualquer outro valor para sair");
         System.out.print("Sua opção: ");
         Scanner input = new Scanner(System.in);

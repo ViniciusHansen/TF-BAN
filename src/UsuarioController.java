@@ -34,4 +34,13 @@ public class UsuarioController {
             System.out.println(it.next().toString());
         }
     }
+
+    void listUsuariosMaioresCurtidas(Connection con) throws SQLException {
+        HashSet all = UsuarioModel.listUsuariosMaioresCurtidas(con);
+        Iterator<String> it = all.iterator();
+        while(it.hasNext()) {
+            System.out.println(it.next());
+        }
+    }
+
 }
