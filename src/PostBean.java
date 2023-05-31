@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 
-import java.util.Arrays;
-
 public class PostBean {
     private int id_post;
     private String descricao;
@@ -13,6 +11,12 @@ public class PostBean {
     private String username; // vai ser usado de chave estrangeira
 
     public PostBean(String descricao, String imagem, String username) {
+        this.descricao = descricao;
+        this.imagem = imagem;
+        this.username = username;
+    }
+    public PostBean(int id_post, String descricao, String imagem, String username) {
+        this.id_post = id_post;
         this.descricao = descricao;
         this.imagem = imagem;
         this.username = username;

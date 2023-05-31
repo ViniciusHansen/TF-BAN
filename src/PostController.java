@@ -35,11 +35,11 @@ public class PostController {
         }
     }
 
-    void listarMedicosAmbulatorios(Connection con) throws SQLException {
-        HashSet all = PostModel.listAllWithAmbulatorios(con);
-        Iterator<PostBean> it = all.iterator();
+    void listarPostsUsuarios(Connection con) throws SQLException {
+        HashSet all = PostModel.listAllWithUsuarios(con);
+        Iterator<String> it = all.iterator();
         while(it.hasNext()) {
-            System.out.println(it.next().toString());
+            System.out.println(it.next());
         }
     }
 }

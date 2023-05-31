@@ -29,8 +29,8 @@ public class Principal {
                             break;
                     case 4: new PostController().listarPosts(con);
                             break;
-                    //case 5: new PostController().listarMedicosAmbulatorios(con);
-                     //       break;
+                    case 5: new PostController().listarPostsUsuarios(con);
+                            break;
                 }
             }catch(SQLException ex) {
                 //ex.printStackTrace();
@@ -48,7 +48,7 @@ public class Principal {
         System.out.println("2 - Inserir um novo Post");
         System.out.println("3 - Exibir todos os Usuários");
         System.out.println("4 - Exibir todos os Posts");
-        System.out.println("5 - Exibir todos os médicos e seus respectivos ambulatórios");
+        System.out.println("5 - Exibir todos os Posts e seus respectivos Usuários");
         System.out.println("Digite qualquer outro valor para sair");
         System.out.print("Sua opção: ");
         Scanner input = new Scanner(System.in);
