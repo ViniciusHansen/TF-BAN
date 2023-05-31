@@ -4,10 +4,7 @@
  * and open the template in the editor.
  */
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Scanner;
 
 /**
@@ -24,16 +21,16 @@ public class Principal {
             op = menu();
             try {
                 switch (op) {
-                    case 1: new AmbulatoriosController().createAmbulatorio(con);
+                    case 1: new UsuarioController().createUsuario(con);
                             break;
-                    case 2: new MedicosController().createMedico(con);
+                    case 2: new PostController().createPost(con);
                             break;
-                    case 3: new AmbulatoriosController().listarAmbulatorio(con);
+                    case 3: new UsuarioController().listarUsuario(con);
                             break;
-                    case 4: new MedicosController().listarMedicos(con);
+                    case 4: new PostController().listarPosts(con);
                             break;
-                    case 5: new MedicosController().listarMedicosAmbulatorios(con);
-                            break;
+                    //case 5: new PostController().listarMedicosAmbulatorios(con);
+                     //       break;
                 }
             }catch(SQLException ex) {
                 //ex.printStackTrace();
@@ -47,10 +44,10 @@ public class Principal {
     private static int menu() {
         System.out.println("");
         System.out.println("Informe o número da opção que desejas executar: ");
-        System.out.println("1 - Inserir um novo ambulatório");
-        System.out.println("2 - Inserir um novo médico");
-        System.out.println("3 - Exibir todos os ambulatório");
-        System.out.println("4 - Exibir todos os médicos");
+        System.out.println("1 - Inserir um novo Usuário");
+        System.out.println("2 - Inserir um novo Post");
+        System.out.println("3 - Exibir todos os Usuários");
+        System.out.println("4 - Exibir todos os Posts");
         System.out.println("5 - Exibir todos os médicos e seus respectivos ambulatórios");
         System.out.println("Digite qualquer outro valor para sair");
         System.out.print("Sua opção: ");

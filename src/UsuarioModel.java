@@ -5,9 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,14 +16,14 @@ import java.util.logging.Logger;
  *
  * @author rebeca
  */
-public class AmbulatoriosModel {
+public class UsuarioModel {
 
-    public static void create(AmbulatoriosBean a, Connection con) throws SQLException {
+    public static void create(UsuarioBean a, Connection con) throws SQLException {
         PreparedStatement st;
-            st = con.prepareStatement("INSERT INTO ambulatorios (nroa, capacidade, andar) VALUES (?,?,?)");
-            st.setInt(1, a.getNroa());
-            st.setInt(2, a.getCapacidade());
-            st.setInt(3, a.getAndar());
+            st = con.prepareStatement("insert into usuario (username,nome,biografia) VALUES (?,?,?)");
+            st.setString(1, a.getUsername());
+            st.setString(2, a.getNome());
+            st.setString(3, a.getBiografia());
             st.execute();
             st.close();  
     }
@@ -35,10 +32,10 @@ public class AmbulatoriosModel {
         Statement st;
         HashSet list = new HashSet();
             st = con.createStatement();
-            String sql = "SELECT nroa, capacidade, andar FROM ambulatorios";
+            String sql = "SELECT username, nome, biografia FROM usuario";
             ResultSet result = st.executeQuery(sql);
             while(result.next()) {
-                list.add(new AmbulatoriosBean(result.getInt(1), result.getInt(2), result.getInt(3)));
+                list.add(new UsuarioBean(result.getString(1), result.getString(2), result.getString(3)));
             }
         return list;
     }
