@@ -45,7 +45,17 @@ public class UsuarioModel {
         HashSet list = new HashSet();
         String retorno = new String();
         st = con.createStatement();
-        String sql = "SELECT u.nome, COUNT(*) AS total_curtidas FROM usuario u INNER JOIN curtiu c ON u.username = c.username GROUP BY u.nome HAVING COUNT(*) = (SELECT MAX(total_curtidas) FROM (SELECT username, COUNT(*) AS total_curtidas FROM curtiu GROUP BY username)AS subconsulta);\n";
+        String sql = "SELECT u.nome, COUNT(*) AS total_curtidas\n" +
+                "FROM usuario u INNER JOIN curtiu c\n" +
+                "ON u.username = c.username\n" +
+                "GROUP BY u.nome\n" +
+                "HAVING COUNT(*) = (\n" +
+                "\tSELECT MAX(total_curtidas) \n" +
+                "\tFROM (\n" +
+                "\t\tSELECT username, COUNT(*) AS total_curtidas \n" +
+                "\t\tFROM curtiu \n" +
+                "\t\tGROUP BY username)\n" +
+                "\tAS subconsulta);";
         ResultSet result = st.executeQuery(sql);
         while(result.next()) {
             retorno += "Nome: "+result.getString(1)+", Total de Curtidas recebidas: "+result.getInt(2)+"\n";
