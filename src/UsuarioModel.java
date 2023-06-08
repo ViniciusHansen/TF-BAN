@@ -28,6 +28,8 @@ public class UsuarioModel {
             st.close();  
     }
 
+
+
     static HashSet listAll(Connection con) throws SQLException {
         Statement st;
         HashSet list = new HashSet();

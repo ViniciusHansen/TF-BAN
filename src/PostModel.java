@@ -46,6 +46,15 @@ public class PostModel {
             st2.execute();
             st2.close();
     }
+
+    public static void novaCurtida(int postID, String username, Connection con) throws SQLException {
+        PreparedStatement st;
+        st = con.prepareStatement("insert into curtiu values(?,?)");
+        st.setInt(1, postID);
+        st.setString(2, username);
+        st.execute();
+        st.close();
+    }
     
     static HashSet listAll(Connection con) throws SQLException {
         Statement st;

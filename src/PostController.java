@@ -35,6 +35,18 @@ public class PostController {
         }
     }
 
+    void novaCurtida(Connection con) throws SQLException{
+        Scanner input = new Scanner(System.in);
+        System.out.println("Insira os seguintes dados para criar uma curtida em um Post: ");
+        System.out.println("Post ID: ");
+        int postid = input.nextInt();
+        System.out.print("Username de quem curtiu: ");
+        String username = input.next();
+
+        PostModel.novaCurtida(postid,username, con);
+        System.out.println("Curtida inserida com sucesso!!");
+    }
+
     void listarPostsUsuarios(Connection con) throws SQLException {
         HashSet all = PostModel.listAllWithUsuarios(con);
         Iterator<String> it = all.iterator();

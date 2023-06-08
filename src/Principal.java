@@ -27,13 +27,15 @@ public class Principal {
                     case 4 -> new PostController().listarPosts(con);
                     case 5 -> new PostController().listarPostsUsuarios(con);
                     case 6 -> new UsuarioController().listUsuariosMaioresCurtidas(con);
+                    case 7 -> new PostController().novaCurtida(con);
                 }
             }catch(SQLException ex) {
                 //ex.printStackTrace();
+                System.out.println("Erro na execução, certifique-se de que não inseriu nada que já exista no banco");
                 System.out.println(ex.getMessage());
                 continue;
             }
-        } while(op>0 && op<6);  
+        } while(op>0 && op<8);
         con.close();
     }    
     
@@ -46,6 +48,7 @@ public class Principal {
         System.out.println("4 - Exibir todos os Posts");
         System.out.println("5 - Exibir todos os Posts e seus respectivos Usuários");
         System.out.println("6 - Exibir Usuários que mais receberam curtidas");
+        System.out.println("7 - Inserir nova curtida");
         System.out.println("Digite qualquer outro valor para sair");
         System.out.print("Sua opção: ");
         Scanner input = new Scanner(System.in);
